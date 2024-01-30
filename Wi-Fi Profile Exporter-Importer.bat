@@ -65,9 +65,22 @@ set /p ProfilePath="What is the full path of your Wi-Fi profile? Enclose the ful
 netsh wlan add profile %ProfilePath%
 if errorlevel 1 goto :Import
 echo.
-echo Wi-Fi profile imported! Press any key to close this batch file.
-goto :Done
+goto :Another
+
+:Another
+set /p Another="Wi-Fi profile imported! Do you want to import antoher Wi-Fi profile? (Yes/No) "
+if /i "%Another%"=="Yes" goto :Another
+if /i "%Another%"=="No" goto :AnotherDone
+echo Invalid Syntax!
+goto :Another
 
 :Done
+endlocal
+pause
+exit
+
+:AnotherDone
+endlocal
+echo Press any key to close this batch file.'
 pause
 exit
