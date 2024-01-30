@@ -4,7 +4,7 @@ title Windows Wi-Fi Profile Exporter/Importer
 goto :Start
 
 :Start
-set /p Export/Import="Do you want to export all Wi-Fi profiles or import Wi-Fi Profile? (Export/Import) "
+set /p Export/Import="Do you want to export all Wi-Fi profiles or import a Wi-Fi Profile? (Export/Import) "
 if /i "%Export/Import%"=="Export" goto :Export
 if /i "%Export/Import%"=="Import" goto :Import
 echo Invalid Syntax!
