@@ -69,7 +69,7 @@ goto :Another
 :Another
 echo.
 set /p Another="Wi-Fi profile imported! Do you want to import antoher Wi-Fi profile? (Yes/No) "
-if /i "%Another%"=="Yes" goto :Another
+if /i "%Another%"=="Yes" goto :Import
 if /i "%Another%"=="No" goto :AnotherDone
 echo Invalid Syntax!
 goto :Another
