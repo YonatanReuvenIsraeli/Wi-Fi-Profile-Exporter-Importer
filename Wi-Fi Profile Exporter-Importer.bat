@@ -61,7 +61,7 @@ goto :Export
 
 :Import
 echo.
-set /p ProfilePath="What is the full path of your Wi-Fi profile? Enclose the full path in double quotation marks. Key must be set to clear. If the Wi-fi profile was exported useing this tool then key would've been be set to clear. "
+set /p ProfilePath="What is the full path of your Wi-Fi profile? Enclose the full path in double quotation marks. Key must be set to clear. If the Wi-fi profile was exported useing this batch file then key would've been be set to clear. "
 netsh wlan add profile %ProfilePath%
 if errorlevel 1 goto :Import
 goto :Another
