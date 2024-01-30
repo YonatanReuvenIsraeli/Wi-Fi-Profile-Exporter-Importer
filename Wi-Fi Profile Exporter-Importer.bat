@@ -54,7 +54,7 @@ if /i "%Export%"=="X:" goto :Drive
 if /i "%Export%"=="Y:" goto :Drive
 if /i "%Export%"=="Z:" goto :Drive
 cd %Export%
-if not exist %Export% goto :Export
+if not exist %Export% goto :All
 if /i "%AllCustom%"=="All" goto :2
 if /i "%AllCustom%"=="Custom" goto :3
 
@@ -78,7 +78,7 @@ goto :Done
 
 :NoDrive
 echo Folder Does Not Exist!
-goto :Export
+goto :All
 
 :3
 netsh wlan export profile "%CustomProfile%" key=clear
