@@ -82,12 +82,14 @@ goto :Export
 
 :3
 netsh wlan export profile "%CustomProfile%" key=clear
+if errorlevel 1 goto :Custom
 set /p Another="Wi-Fi profile %CustomProfile% exported to %Export%! Do you want to export another Wi-Fi profile? (Yes/No) "
 if /i "%Another%"==Yes goto :Custom
 if /i "%Another%"==No goto :Done
 
 :5
 netsh wlan export profile "%CustomProfile%" key=clear
+if errorlevel 1 goto :Custom
 set /p Another="Wi-Fi profile %CustomProfile% exported to %Export%! Do you want to export another Wi-Fi profile? (Yes/No) "
 if /i "%Another%"==Yes goto :Custom
 if /i "%Another%"==No goto :Done
