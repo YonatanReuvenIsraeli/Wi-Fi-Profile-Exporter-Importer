@@ -82,6 +82,6 @@ exit
 :AnotherDone
 endlocal
 echo.
-echo Press any key to close this batch file.'
+echo Press any key to close this batch file.
 pause
 exit
