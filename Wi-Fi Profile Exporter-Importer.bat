@@ -49,12 +49,8 @@ if /i "%Export%"=="W:" goto :Drive
 if /i "%Export%"=="X:" goto :Drive
 if /i "%Export%"=="Y:" goto :Drive
 if /i "%Export%"=="Z:" goto :Drive
-cd /d %Export%
-if not exist %Export% goto :NotExist
-netsh wlan export profile key=clear
-echo.
-echo All Wi-Fi profiles exported to %Export%! Press any key to close this batch file.
-goto :Done
+echo Invalid Syntax!
+goto :Export
 
 :Export
 echo.
