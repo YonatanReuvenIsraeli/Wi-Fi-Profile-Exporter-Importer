@@ -13,6 +13,7 @@ echo Invalid Syntax!
 goto :Disclaimer
 
 :Start
+echo.
 set /p Export/Import="Do you want to export all Wi-Fi profiles or import a Wi-Fi Profile? (Export/Import) "
 if /i "%Export/Import%"=="Export" goto :Export
 if /i "%Export/Import%"=="Import" goto :Import
@@ -62,6 +63,7 @@ echo Drive Does Not Exist!
 goto :Export
 
 :Folder
+echo.
 set /p Folder="What folder to export all Wi-Fi profiles to? "
 if not exist %Export%\%Folder% goto :NoFolder
 cd %Folder%
