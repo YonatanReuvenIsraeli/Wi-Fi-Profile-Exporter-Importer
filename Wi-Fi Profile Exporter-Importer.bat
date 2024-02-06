@@ -50,7 +50,7 @@ if /i "%Export%"=="W:" goto :Drive
 if /i "%Export%"=="X:" goto :Drive
 if /i "%Export%"=="Y:" goto :Drive
 if /i "%Export%"=="Z:" goto :Drive
-cd %Export%
+cd /d %Export%
 if not exist %Export% goto :Export
 netsh wlan export profile key=clear
 echo.
