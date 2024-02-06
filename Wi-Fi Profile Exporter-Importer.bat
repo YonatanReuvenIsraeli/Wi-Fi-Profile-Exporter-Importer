@@ -22,7 +22,7 @@ goto :Start
 
 :Export
 echo.
-set /p Export="What is the folder you want to export all Wi-Fi profiles to? "
+set /p Export="What is the drive letter you want to export all Wi-Fi profiles to? "
 if /i "%Export%"=="A:" goto :Drive
 if /i "%Export%"=="B:" goto :Drive
 if /i "%Export%"=="C:" goto :Drive
@@ -52,22 +52,27 @@ if /i "%Export%"=="Z:" goto :Drive
 echo Invalid Syntax!
 goto :Export
 
-:Export
-echo.
-echo Folder does not exist!
-goto :NotExist
-
 :Drive
 if not exist %Export% goto :NoDrive
 %Export%
+goto :Folder
+
+:NoDrive
+echo Drive Does Not Exist!
+goto :Export
+
+:Folder
+set /p Folder="What folder to export all Wi-Fi profiles to? "
+if not exist %Export%\%Folder% goto :NoFolder
+cd %Folder%
 netsh wlan export profile key=clear
 echo.
 echo All Wi-Fi profiles exported to %Export%! Press any key to close this batch file.
 goto :Done
 
-:NoDrive
-echo Folder Does Not Exist!
-goto :Export
+:NoFolder
+echo Drive Does Not Exist!
+goto :Folder
 
 :Import
 echo.
