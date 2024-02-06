@@ -64,7 +64,7 @@ goto :Export
 
 :Folder
 echo.
-set /p Folder="What folder to export all Wi-Fi profiles to? "
+set /p Folder="What folder to export all Wi-Fi profiles to? Press enter if you want to save it to %Export%. "
 if not exist %Export%\%Folder% goto :NoFolder
 cd %Folder%
 netsh wlan export profile key=clear
