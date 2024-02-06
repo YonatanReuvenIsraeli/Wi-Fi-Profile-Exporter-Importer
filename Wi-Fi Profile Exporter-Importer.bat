@@ -73,7 +73,7 @@ echo All Wi-Fi profiles exported to %Export%! Press any key to close this batch 
 goto :Done
 
 :NoFolder
-echo Drive Does Not Exist!
+echo Folder Does Not Exist!
 goto :Folder
 
 :Import
