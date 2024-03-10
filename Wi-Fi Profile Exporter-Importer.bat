@@ -93,12 +93,12 @@ goto :Another
 
 :Done
 endlocal
-pause
+pause >nul
 exit
 
 :AnotherDone
 endlocal
 echo.
 echo Press any key to close this batch file.
-pause
+pause >nul
 exit
