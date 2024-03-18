@@ -4,5 +4,5 @@
 Export or import Windows Wi-Fi profiles.
 
 ## Notes:
-**1.** This is a hacking version of Wi-Fi Profile Exporter/Importer because it doesn't require administrator access to use.  
+**1.** This is a hacking version of Wi-Fi Profile Exporter/Importer because it doesn't require administrator privileges to use.  
 **2.** You cannot save it on the %SystemDrive% lower than your users folder due to it requiring administrator privileges.
