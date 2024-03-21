@@ -6,6 +6,7 @@ goto Disclaimer
 
 :Disclaimer
 echo.
+set Disclaimer=
 set /p Disclaimer="Do you agree to the Disclaimer? (Yes/No) "
 if /i "%Disclaimer%"=="Yes" goto Start
 if /i "%Disclaimer%"=="No" goto Exit
@@ -14,6 +15,7 @@ goto Disclaimer
 
 :Start
 echo.
+set Export/Import=
 set /p Export/Import="Do you want to export all Wi-Fi profiles or import a Wi-Fi Profile? (Export/Import) "
 if /i "%Export/Import%"=="Export" goto Export
 if /i "%Export/Import%"=="Import" goto Import
@@ -23,6 +25,7 @@ goto Start
 
 :Export
 echo.
+set Export=
 set /p Export="What is the drive letter you want to export all Wi-Fi profiles to? "
 if /i "%Export%"=="A:" goto Drive
 if /i "%Export%"=="B:" goto Drive
@@ -64,6 +67,7 @@ goto Export
 
 :Folder
 echo.
+set Folder=
 set /p Folder="What folder to export all Wi-Fi profiles to? Press enter if you want to save it to %Export%. "
 if not exist %Export%\%Folder% goto NoFolder
 cd %Folder%
@@ -78,6 +82,7 @@ goto Folder
 
 :Import
 echo.
+set ProfilePath=
 set /p ProfilePath="What is the full path of your Wi-Fi profile? Enclose the full path in double quotation marks. Key must be set to clear. If the Wi-fi profile was exported useing this batch file then key would've been be set to clear. "
 netsh wlan add profile %ProfilePath%
 if errorlevel 1 goto Import
@@ -85,6 +90,7 @@ goto Another
 
 :Another
 echo.
+set Another=
 set /p Another="Wi-Fi profile imported! Do you want to import antoher Wi-Fi profile? (Yes/No) "
 if /i "%Another%"=="Yes" goto Import
 if /i "%Another%"=="No" goto AnotherDone
