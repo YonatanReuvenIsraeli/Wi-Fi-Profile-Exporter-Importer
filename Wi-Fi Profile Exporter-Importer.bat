@@ -58,7 +58,8 @@ goto Export
 
 :Drive
 if not exist %Export% goto NoDrive
-cd /d %Export%\
+%Export%
+cd\
 goto Folder
 
 :NoDrive
