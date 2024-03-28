@@ -41,7 +41,7 @@ if /i "%Export%"=="All" goto All
 if /i "%Export%"=="Some" goto Some1
 
 :NotExist
-echo "FullPath" Does Not Exist!
+echo "%FullPath%" Does Not Exist!
 goto FullPath
 
 :All
