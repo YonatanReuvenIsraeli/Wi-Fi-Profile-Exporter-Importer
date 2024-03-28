@@ -58,7 +58,7 @@ goto Some2
 echo.
 set Profile=
 set /p Profile="Which Wi-Fi profile do you want to export? "
-netsh wlan export profile name="Profile"folder="%FullPath%" key=clear
+netsh wlan export profile name="%Profile%" folder="%FullPath%" key=clear
 if errorlevel 1 goto Error
 goto AnotherExport
 
