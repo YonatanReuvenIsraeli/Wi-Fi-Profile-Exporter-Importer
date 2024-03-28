@@ -16,7 +16,7 @@ goto Disclaimer
 :Start
 echo.
 set Export/Import=
-set /p Export/Import="Do you want to export all Wi-Fi profiles or import a Wi-Fi Profile? (Export/Import) "
+set /p Export/Import="Do you want to export Wi-Fi profiles or import Wi-Fi profiles? (Export/Import) "
 if /i "%Export/Import%"=="Export" goto Export
 if /i "%Export/Import%"=="Import" goto Import
 echo Invalid Syntax!
@@ -26,60 +26,54 @@ goto Start
 :Export
 echo.
 set Export=
-set /p Export="What is the drive letter you want to export all Wi-Fi profiles to? "
-if /i "%Export%"=="A:" goto Drive
-if /i "%Export%"=="B:" goto Drive
-if /i "%Export%"=="C:" goto Drive
-if /i "%Export%"=="D:" goto Drive
-if /i "%Export%"=="E:" goto Drive
-if /i "%Export%"=="F:" goto Drive
-if /i "%Export%"=="G:" goto Drive
-if /i "%Export%"=="H:" goto Drive
-if /i "%Export%"=="I:" goto Drive
-if /i "%Export%"=="J:" goto Drive
-if /i "%Export%"=="K:" goto Drive
-if /i "%Export%"=="L:" goto Drive
-if /i "%Export%"=="M:" goto Drive
-if /i "%Export%"=="N:" goto Drive
-if /i "%Export%"=="O:" goto Drive
-if /i "%Export%"=="P:" goto Drive
-if /i "%Export%"=="Q:" goto Drive
-if /i "%Export%"=="R:" goto Drive
-if /i "%Export%"=="S:" goto Drive
-if /i "%Export%"=="T:" goto Drive
-if /i "%Export%"=="U:" goto Drive
-if /i "%Export%"=="V:" goto Drive
-if /i "%Export%"=="W:" goto Drive
-if /i "%Export%"=="X:" goto Drive
-if /i "%Export%"=="Y:" goto Drive
-if /i "%Export%"=="Z:" goto Drive
+set /p Export="Do you want to export some Wi-Fi profiles or all Wi-Fi profiles? (All/Some) "
+if /i "%Export%"=="All" goto FullPath
+if /i "%Export%"=="Some" goto FullPath
 echo Invalid Syntax!
 goto Export
 
-:Drive
-if not exist %Export% goto NoDrive
-%Export%
-cd\
-goto Folder
-
-:NoDrive
-echo Drive Does Not Exist!
-goto Export
-
-:Folder
+:FullPath
 echo.
-set Folder=
-set /p Folder="What folder to export all Wi-Fi profiles to? Press enter if you want to save it to %Export%. "
-if not exist %Export%\%Folder% goto NoFolder
-cd %Folder%
-netsh wlan export profile key=clear
+set FullPath=
+set /p FullPath="What folder to export the Wi-Fi profiles to? "
+if not exist "%FullPath%" goto NotExist
+if /i "%Export%"=="All" goto All
+if /i "%Export%"=="Some" goto Some1
+
+:NotExist
+echo "FullPath" Does Not Exist!
+goto FullPath
+
+:All
+netsh wlan export profile folder="%FullPath%" key=clear
 echo.
-echo All Wi-Fi profiles exported to %Export%! Press any key to close this batch file.
+echo All Wi-Fi profiles exported to %FullPath%! Press any key to close this batch file.
 goto Done
 
-:NoFolder
-echo Folder Does Not Exist!
-goto Folder
+:Some1
+netsh wlan show profile
+goto Some2
+
+:Some2
+echo.
+set Profile=
+set /p Profile="Which Wi-Fi profile do you want to export? "
+netsh wlan export profile name="Profile"folder="%FullPath%" key=clear
+if errorlevel 1 goto Error
+goto AnotherExport
+
+:Error
+echo Invalid Profile Name!
+goto Some2
+
+:AnotherExport
+echo.
+set AnotherExport=
+set /p AnotherExport="Do you want to export another Wi-Fi profile? (Yes/No) "
+if /i "%AnotherExport%"=="Yes" goto Some2
+if /i "%AnotherExport%"=="No" goto AnotherDone
+echo Invalid Syntax!
+goto AnotherExport
 
 :Import
 echo.
