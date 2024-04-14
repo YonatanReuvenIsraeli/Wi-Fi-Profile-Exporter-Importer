@@ -1,7 +1,7 @@
 @echo off
 setlocal
 title Wi-Fi Profile Exporter/Importer
-echo Wi-Fi Profile Exporter/Importer v1.1.1
+echo Wi-Fi Profile Exporter/Importer v1.1.2
 goto Start
 
 :Start
@@ -50,7 +50,7 @@ echo.
 set Profile=
 set /p Profile="Which Wi-Fi profile do you want to export? "
 netsh wlan export profile name="%Profile%" folder="%FullPath%" key=clear
-if not errorlevel 0 goto Error
+if not "%errorlevel%"=="0" goto Error
 goto AnotherExport
 
 :Error
@@ -71,7 +71,7 @@ echo.
 set ProfilePath=
 set /p ProfilePath="What is the full path of your Wi-Fi profile? Enclose the full path in double quotation marks. Key must be set to clear. If the Wi-fi profile was exported useing this batch file then key would've been be set to clear. "
 netsh wlan add profile %ProfilePath%
-if not errorlevel 0 goto AnotherImport
+if not "%errorlevel%"=="0" goto AnotherImport
 goto Another
 
 :AnotherImport
