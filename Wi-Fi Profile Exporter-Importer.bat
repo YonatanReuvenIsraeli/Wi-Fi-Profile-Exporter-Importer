@@ -1,7 +1,11 @@
 @echo off
 setlocal
 title Wi-Fi Profile Exporter/Importer
-echo Wi-Fi Profile Exporter/Importer v1.1.2
+echo Program Name: Wi-Fi Profile Exporter/Importer
+echo Version: 1.2.0
+echo Developer: @YonatanReuvenIsraeli
+echo Website: https://www.yonatanreuvenisraeli.dev
+echo License: GNU General Public License v3.0
 goto Start
 
 :Start
