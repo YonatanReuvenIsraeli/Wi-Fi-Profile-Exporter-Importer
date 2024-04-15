@@ -89,7 +89,7 @@ goto Another
 
 :Done
 endlocal
-pause > nul
+pause > nul 2>&1
 exit
 
 :AnotherDone
