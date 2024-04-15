@@ -2,7 +2,7 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.0
+echo Version: 1.2.1
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
