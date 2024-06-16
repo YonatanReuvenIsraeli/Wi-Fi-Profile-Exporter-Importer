@@ -2,7 +2,7 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.1
+echo Version: 1.2.2
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -14,7 +14,7 @@ set Export/Import=
 set /p Export/Import="Do you want to export Wi-Fi profiles or import Wi-Fi profiles? (Export/Import) "
 if /i "%Export/Import%"=="Export" goto Export
 if /i "%Export/Import%"=="Import" goto Import
-echo Invalid Syntax!
+echo Invalid syntax!
 echo.
 goto Start
 
@@ -24,7 +24,7 @@ set Export=
 set /p Export="Do you want to export some Wi-Fi profiles or all Wi-Fi profiles? (All/Some) "
 if /i "%Export%"=="All" goto FullPath
 if /i "%Export%"=="Some" goto FullPath
-echo Invalid Syntax!
+echo Invalid syntax!
 goto Export
 
 :FullPath
@@ -67,7 +67,7 @@ set AnotherExport=
 set /p AnotherExport="Do you want to export another Wi-Fi profile? (Yes/No) "
 if /i "%AnotherExport%"=="Yes" goto Some2
 if /i "%AnotherExport%"=="No" goto AnotherDone
-echo Invalid Syntax!
+echo Invalid syntax!
 goto AnotherExport
 
 :Import
@@ -84,7 +84,7 @@ set Another=
 set /p Another="Wi-Fi profile imported! Do you want to import antoher Wi-Fi profile? (Yes/No) "
 if /i "%Another%"=="Yes" goto Import
 if /i "%Another%"=="No" goto AnotherDone
-echo Invalid Syntax!
+echo Invalid syntax!
 goto Another
 
 :Done
