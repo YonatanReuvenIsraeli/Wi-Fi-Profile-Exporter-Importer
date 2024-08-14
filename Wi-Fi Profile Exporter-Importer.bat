@@ -2,92 +2,92 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.2
+echo Version: 1.2.4
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
-goto Start
+goto "Start"
 
-:Start
+:"Start"
 echo.
 set Export/Import=
 set /p Export/Import="Do you want to export Wi-Fi profiles or import Wi-Fi profiles? (Export/Import) "
-if /i "%Export/Import%"=="Export" goto Export
-if /i "%Export/Import%"=="Import" goto Import
+if /i "%Export/Import%"=="Export" goto "Export"
+if /i "%Export/Import%"=="Import" goto "Import"
 echo Invalid syntax!
 echo.
-goto Start
+goto "Start"
 
-:Export
+:"Export"
 echo.
 set Export=
 set /p Export="Do you want to export some Wi-Fi profiles or all Wi-Fi profiles? (All/Some) "
-if /i "%Export%"=="All" goto FullPath
-if /i "%Export%"=="Some" goto FullPath
+if /i "%Export%"=="All" goto "FullPath"
+if /i "%Export%"=="Some" goto "FullPath"
 echo Invalid syntax!
-goto Export
+goto "Export"
 
-:FullPath
+:"FullPath"
 echo.
 set FullPath=
 set /p FullPath="What folder to export the Wi-Fi profiles to? "
-if not exist "%FullPath%" goto NotExist
-if /i "%Export%"=="All" goto All
-if /i "%Export%"=="Some" goto Some1
+if not exist "%FullPath%" goto "NotExist"
+if /i "%Export%"=="All" goto "All"
+if /i "%Export%"=="Some" goto "Some1"
 
-:NotExist
+:"NotExist"
 echo "%FullPath%" Does Not Exist!
-goto FullPath
+goto "FullPath"
 
-:All
+:"All"
 netsh wlan export profile folder="%FullPath%" key=clear
 echo.
 echo All Wi-Fi profiles exported to %FullPath%! Press any key to close this batch file.
-goto Done
+goto "Done"
 
-:Some1
+:"Some1"
 netsh wlan show profile
-goto Some2
+goto "Some2"
 
-:Some2
+:"Some2"
 echo.
 set Profile=
 set /p Profile="Which Wi-Fi profile do you want to export? "
 netsh wlan export profile name="%Profile%" folder="%FullPath%" key=clear
-if not "%errorlevel%"=="0" goto Error
-goto AnotherExport
+if not "%errorlevel%"=="0" goto "Error"
+goto "AnotherExport"
 
-:Error
+:"Error"
 echo Invalid Profile Name!
-goto Some2
+goto "Some2"
 
-:AnotherExport
+:"AnotherExport"
 echo.
 set AnotherExport=
 set /p AnotherExport="Do you want to export another Wi-Fi profile? (Yes/No) "
-if /i "%AnotherExport%"=="Yes" goto Some2
-if /i "%AnotherExport%"=="No" goto AnotherDone
+if /i "%AnotherExport%"=="Yes" goto "Some2"
+if /i "%AnotherExport%"=="No" goto "AnotherDone"
 echo Invalid syntax!
-goto AnotherExport
+goto "AnotherExport"
 
-:Import
+:"Import"
 echo.
 set ProfilePath=
 set /p ProfilePath="What is the full path of your Wi-Fi profile? Enclose the full path in double quotation marks. Key must be set to clear. If the Wi-fi profile was exported useing this batch file then key would've been be set to clear. "
 netsh wlan add profile %ProfilePath%
-if not "%errorlevel%"=="0" goto AnotherImport
-goto Another
+if not "%errorlevel%"=="0" goto "AnotherImport"
+goto "Another"
 
-:AnotherImport
+:"AnotherImport"
 echo.
 set Another=
 set /p Another="Wi-Fi profile imported! Do you want to import antoher Wi-Fi profile? (Yes/No) "
-if /i "%Another%"=="Yes" goto Import
-if /i "%Another%"=="No" goto AnotherDone
+if /i "%Another%"=="Yes" goto "Import"
+if /i "%Another%"=="No" goto "AnotherDone"
 echo Invalid syntax!
-goto Another
+goto "Another"
 
-:Done
+:"Done"
 endlocal
 pause > nul 2>&1
 exit
