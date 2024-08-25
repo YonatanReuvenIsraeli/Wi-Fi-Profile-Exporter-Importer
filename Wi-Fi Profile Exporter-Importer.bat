@@ -2,7 +2,7 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.4
+echo Version: 1.2.5
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -92,7 +92,7 @@ endlocal
 pause > nul 2>&1
 exit
 
-:AnotherDone
+:"AnotherDone"
 endlocal
 echo.
 echo Press any key to close this batch file.
