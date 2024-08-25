@@ -1,4 +1,4 @@
-# Wi-Fi Profile Exporter/Importer v1.2.5
+# Wi-Fi Profile Exporter/Importer v1.2.6
 
 ## Note:
 **1.** You cannot save it on the %SystemDrive% lower than your users folder due to it requiring administrator privileges.
