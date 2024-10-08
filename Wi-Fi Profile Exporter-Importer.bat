@@ -2,7 +2,7 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.6
+echo Version: 1.2.7
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -58,7 +58,7 @@ if not "%errorlevel%"=="0" goto "Error"
 goto "AnotherExport"
 
 :"Error"
-echo Invalid Profile Name!
+echo Invalid profile name!
 goto "Some2"
 
 :"AnotherExport"
