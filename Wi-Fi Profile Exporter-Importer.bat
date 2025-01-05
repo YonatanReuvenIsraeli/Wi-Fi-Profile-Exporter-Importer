@@ -2,11 +2,11 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.9
+echo Version: 1.2.10
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
-echo Sponsor: https://github.com/sponsors/YonatanReuvenIsraeli 
+echo Sponsor: https://github.com/sponsors/YonatanReuvenIsraeli
 goto "Start"
 
 :"Start"
@@ -40,16 +40,16 @@ echo "%FullPath%" does Not Exist!
 goto "FullPath"
 
 :"All"
-netsh wlan export profile folder="%FullPath%" key=clear
+"%windir%\System32\netsh.exe" wlan export profile folder="%FullPath%" key=clear
 echo.
 echo All Wi-Fi profiles exported to %FullPath%! Press any key to close this batch file.
 goto "Done"
 
 :"Some"
-netsh wlan show profile
+"%windir%\System32\netsh.exe" wlan show profile
 set Profile=
 set /p Profile="Which Wi-Fi profile do you want to export? "
-netsh wlan export profile name="%Profile%" folder="%FullPath%" key=clear
+"%windir%\System32\netsh.exe" wlan export profile name="%Profile%" folder="%FullPath%" key=clear
 goto "AnotherExport"
 
 :"AnotherExport"
@@ -65,7 +65,7 @@ goto "AnotherExport"
 echo.
 set ProfilePath=
 set /p ProfilePath="What is the full path of your Wi-Fi profile? Key must be set to clear. If the Wi-fi profile was exported useing this batch file then key would've been be set to clear. "
-netsh wlan add profile "%ProfilePath%"
+"%windir%\System32\netsh.exe" wlan add profile "%ProfilePath%"
 if not "%errorlevel%"=="0" goto "Error"
 goto "AnotherImport"
 
