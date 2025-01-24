@@ -2,7 +2,7 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.11
+echo Version: 1.2.12
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -37,13 +37,13 @@ goto "Export"
 :"FullPath"
 echo.
 set FullPath=
-set /p FullPath="What folder to export the Wi-Fi profiles to? "
-if not exist "%FullPath%" goto "NotExist"
+set /p FullPath="What folder do yuo want to export the Wi-Fi profiles to? "
+if not exist "%FullPath%" goto "NotExistExport"
 if /i "%Export%"=="All" goto "All"
 if /i "%Export%"=="Some" goto "Some"
 
-:"NotExist"
-echo "%FullPath%" does Not Exist!
+:"NotExistExport"
+echo "%FullPath%" does not exist!
 goto "FullPath"
 
 :"All"
@@ -71,13 +71,18 @@ goto "AnotherExport"
 :"Import"
 echo.
 set ProfilePath=
-set /p ProfilePath="What is the full path of your Wi-Fi profile? Key must be set to clear. If the Wi-fi profile was exported useing this batch file then key would've been be set to clear. "
+set /p ProfilePath="What is the full path of your Wi-Fi profile? Key must be set to clear. If the Wi-fi profile was exported using this batch file then key would've been set to clear. "
+if not exist "%ProfilePath%" goto "NotExistImport"
 "%windir%\System32\netsh.exe" wlan add profile "%ProfilePath%"
 if not "%errorlevel%"=="0" goto "Error"
 goto "AnotherImport"
 
+:"NotExistImport"
+echo "%ProfilePath%" does not exist!
+goto "Import"
+
 :"Error"
-echo There has been an error! Key may have not be set to clear. "%ProfilePath%" may not be a Wi-Fi profile or not exist. You can try again.
+echo There has been an error! Key may have not be set to clear. "%ProfilePath%" may not be a Wi-Fi profile. You can try again.
 goto "Import"
 
 :"AnotherImport"
