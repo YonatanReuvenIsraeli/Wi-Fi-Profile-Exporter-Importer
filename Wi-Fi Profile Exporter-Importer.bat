@@ -2,7 +2,7 @@
 setlocal
 title Wi-Fi Profile Exporter/Importer
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.12
+echo Version: 1.2.13
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -37,7 +37,7 @@ goto "Export"
 :"FullPath"
 echo.
 set FullPath=
-set /p FullPath="What folder do yuo want to export the Wi-Fi profiles to? "
+set /p FullPath="What folder do you want to export the Wi-Fi profiles to? "
 if not exist "%FullPath%" goto "NotExistExport"
 if /i "%Export%"=="All" goto "All"
 if /i "%Export%"=="Some" goto "Some"
