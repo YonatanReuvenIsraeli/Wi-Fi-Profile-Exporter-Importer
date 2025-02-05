@@ -2,7 +2,7 @@
 title Wi-Fi Profile Exporter/Importer
 setlocal
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.14
+echo Version: 1.2.15
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -71,7 +71,7 @@ goto "AnotherExport"
 :"Import"
 echo.
 set ProfilePath=
-set /p ProfilePath="What is the full path of your Wi-Fi profile? Key must be set to clear. If the Wi-fi profile was exported using this batch file then key would've been set to clear. "
+set /p ProfilePath="What is the full path of your Wi-Fi profile? Key must be set to clear. If the Wi-Fi profile was exported using this batch file then key would've been set to clear. "
 if not exist "%ProfilePath%" goto "NotExistImport"
 "%windir%\System32\netsh.exe" wlan add profile "%ProfilePath%"
 if not "%errorlevel%"=="0" goto "Error"
