@@ -2,7 +2,7 @@
 title Wi-Fi Profile Exporter/Importer
 setlocal
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.15
+echo Version: 1.2.16
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -82,7 +82,7 @@ echo "%ProfilePath%" does not exist!
 goto "Import"
 
 :"Error"
-echo There has been an error! Key may have not be set to clear. "%ProfilePath%" may not be a Wi-Fi profile. You can try again.
+echo There has been an error! Key may have not have been set to clear. "%ProfilePath%" may not be a Wi-Fi profile. You can try again.
 goto "Import"
 
 :"AnotherImport"
