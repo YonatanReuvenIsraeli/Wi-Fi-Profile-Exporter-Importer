@@ -2,7 +2,7 @@
 title Wi-Fi Profile Exporter/Importer
 setlocal
 echo Program Name: Wi-Fi Profile Exporter/Importer
-echo Version: 1.2.16
+echo Version: 1.2.17
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -18,10 +18,10 @@ goto "Done"
 
 :"Start"
 echo.
-set Export/Import=
-set /p Export/Import="Do you want to export Wi-Fi profiles or import Wi-Fi profiles? (Export/Import) "
-if /i "%Export/Import%"=="Export" goto "Export"
-if /i "%Export/Import%"=="Import" goto "Import"
+set ExportImport=
+set /p ExportImport="Do you want to export Wi-Fi profiles or import Wi-Fi profiles? (Export/Import) "
+if /i "%ExportImport%"=="Export" goto "Export"
+if /i "%ExportImport%"=="Import" goto "Import"
 echo Invalid syntax!
 goto "Start"
 
